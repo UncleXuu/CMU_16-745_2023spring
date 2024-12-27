@@ -63,3 +63,10 @@ This homework focuses on solving non-linear programming (NLP) problems using `Di
     <img src="media/hw3/ref_attitude.png" alt="cartpole_TVLQR" width="45%">
     <figcaption>Use different parameters for simulation to test the control method</figcaption>
 </p>
+
+- **Q3:** This question involves driving three planar quadrotors from different initial positions to different goals while ensuring there are no collisions. The `DC` method is used to generate trajectories and feedforward controls for the three quadrotors. The states of the three quadrotors are combined into a single state vector `X`, and the controls are combined into a single control vector `U`. These vectors are then combined into a single vector `Z`, which is sent to `IPOPT` to solve the problem. The left figure shows the trajectories without collision constraints, resulting in collisions. The right figure includes collision inequality constraints to prevent collisions.
+<p align="center">
+    <img src="media/hw3/planer_quadrotors_without_constraints.gif" alt="cartpole_LQR" width="45%">
+    <img src="media/hw3/planer_quadrotors_with_constraints.gif" alt="cartpole_TVLQR" width="45%">
+    <figcaption>Multi agents motion planning</figcaption>
+</p>

@@ -70,3 +70,24 @@ This homework focuses on solving non-linear programming (NLP) problems using `Di
     <img src="media/hw3/planer_quadrotors_with_constraints.gif" alt="cartpole_TVLQR" width="45%">
     <figcaption>Multi agents motion planning</figcaption>
 </p>
+
+## Homework 4
+This homework introduced iterative learning control to optimize the feed forward control and hybrid systems modeling with contact dynamics.
+
+- **Q1:** The objective of this problem is to control the car to follow a generated trajectory. Due to the sim-to-real gap in the dynamic model (with a deterministic environment), the actual trajectory deviates significantly from the reference trajectory, as shown in the left figure. To address this, Iterative Learning Control (ILC) can be employed to optimize the feedforward control. The cost function aims to minimize the differences (ΔX and ΔU) between the actual and reference trajectories. The constraints include dynamic and control constraints. The problem is solved using `ECOS.Optimizer` to obtain ΔU, which is iteratively added to the original control input U until convergence is achieved.
+<p align="center">
+    <img src="media/hw4/car_trajectory_direct_control.png" alt="cartpole_LQR" width="45%">
+    <img src="media/hw4/car_trajectory_iterative_learning_control.png" alt="cartpole_TVLQR" width="45%">
+    <figcaption>Trajectory following before and after iterative learning control</figcaption>
+</p>
+
+<p align="center">
+    <img src="media/hw4/car.gif" alt="fallingBlock" width="60%">
+    <figcaption>Simulate the car following the trajectory</figcaption>
+</p>
+
+- **Q2:** Similar to the `DC` method in Homework 3, the `IPOPT` solver is used to solve this problem. The bipedal robot needs to contact the ground, resulting in different dynamic formulations when the robot is in contact with the surface. A jump map is required to change the velocity's direction during state transitions. In this problem, there is no state detection method, state changes are enforced every five timesteps (take one leg as example, 0.5s in ground, 0.5s in air). 
+<p align="center">
+    <img src="media/hw4/walker.gif" alt="fallingBlock" width="60%">
+    <figcaption>Simulate the bipedal robot following the trajectory</figcaption>
+</p>
